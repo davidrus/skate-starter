@@ -1,8 +1,4 @@
-import { define } from 'skatejs';
-import RawApp from './App';
-
-const App = define(RawApp);
-
+import App from './App';
 export {
   App
 };

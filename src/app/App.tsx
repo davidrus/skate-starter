@@ -1,29 +1,20 @@
-import { Component, h, prop } from 'skatejs';
+import { Component, define, h } from 'skatejs';
 
-import styles from './App.css';
-import { MarkdownEditor } from './components/markdown-editor';
+import { bind } from 'decko';
 
-type Props = {
-  greeting: string,
-};
-export default class App extends Component<Props> {
+export default class App extends Component<void> {
   static get is() { return 'my-app'; }
-  static get props() {
-    return {
-      greeting: prop.string()
-    };
+
+  @bind()
+  handleClick() {
+    console.log('clicked with this scope: ', this);
   }
 
-  greeting: string = 'World';
-
-  renderCallback({ greeting }: Props) {
+  renderCallback() {
     return [
-      <style>{styles}</style>,
-      <div>Hello {greeting}!</div>,
-      <p>
-        <blockquote>Don't hate! Just Skate!</blockquote>
-      </p>,
-      <MarkdownEditor />
+      <div onClick={this.handleClick}>Hello my lord!</div>,
     ];
   }
 };
+
+define(App);
